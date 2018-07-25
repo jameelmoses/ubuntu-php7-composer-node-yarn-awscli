@@ -82,14 +82,12 @@ RUN curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.32.1/install.sh
     nvm install 8.11.3 && \
     npm i -g npm
 
-# Install Yarn
-RUN apt-get -y install yarn --no-install-recommends
+# Install Yarn & Gulp
+RUN apt-get -y install yarn --no-install-recommends && \
+    yarn global add gulp-cli
 
 # Clean apt
 RUN apt-get clean
-
-# Install Gulp
-RUN yarn global add gulp-cli
 
 # Install composer
 RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer creates=/usr/local/bin/composer
