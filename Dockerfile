@@ -75,16 +75,15 @@ RUN apt-get -y --allow-unauthenticated install \
     php7.1-zip \
     php-xdebug
 
-# Install node
+# Install node & gulp
 RUN curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.32.1/install.sh | bash && \
     export NVM_DIR="/root/.nvm" && \
     [ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh" && \
     nvm install 8.11.3 && \
-    npm i -g npm
+    npm i -g npm gulp-cli
 
-# Install Yarn & Gulp
-RUN apt-get -y install yarn --no-install-recommends && \
-    yarn global add gulp-cli
+# Install Yarn
+RUN apt-get -y install yarn --no-install-recommends
 
 # Clean apt
 RUN apt-get clean
