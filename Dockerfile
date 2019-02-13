@@ -30,22 +30,18 @@ RUN apt-get -y install wget \
   ansible \
   apt-transport-https
 
-# Add Yarn
-RUN curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | apt-key add -
-RUN echo "deb https://dl.yarnpkg.com/debian/ stable main" | tee /etc/apt/sources.list.d/yarn.list
-
 # Add repos
-RUN add-apt-repository ppa:fkrull/deadsnakes
+RUN add-apt-repository ppa:deadsnakes/ppa
 RUN LC_ALL=en_US.UTF-8 apt-add-repository ppa:ondrej/php
 RUN apt-get update
 
 # Install python
 RUN apt-get install -y python3.7
 RUN apt-get install -y python3-pip
-RUN pip3 install --upgrade pip3
+RUN python3 -m pip install --upgrade pip
 
 # Install AWS CLI
-RUN pip3 install awscli --upgrade --user
+RUN pip install awscli --upgrade --user
 
 # Install PHP
 RUN apt-get -y --allow-unauthenticated install \
@@ -74,26 +70,19 @@ RUN apt-get -y --allow-unauthenticated install \
   php7.2-zip \
   php-xdebug
 
-# Install node & gulp
-RUN curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.34.0/install.sh | bash && \
-  export NVM_DIR="/root/.nvm" && \
-  [ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh" && \
-  nvm install node
+# Install latest Node and npm
+RUN apt-get install -y nodejs npm
 
-# Install Yarn
-RUN apt-get -y install --no-install-recommends yarn
-RUN yarn global add gulp-cli
+# Install yarn
+RUN npm install --global yarn
 
 # Clean apt
 RUN apt-get clean
 
 # Install composer
 RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer creates=/usr/local/bin/composer
-RUN php /usr/local/bin/composer global require "fxp/composer-asset-plugin:~1.1.1"
 RUN php /usr/local/bin/composer global require "hirak/prestissimo:^0.3"
 
 # Misc
 RUN mkdir -p ~/.ssh
 RUN [[ -f /.dockerenv ]] && echo -e "Host *\n\tStrictHostKeyChecking no\n\n" > ~/.ssh/config
-
-ENV DEBIAN_FRONTEND teletype
