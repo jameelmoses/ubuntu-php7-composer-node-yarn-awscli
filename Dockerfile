@@ -10,6 +10,7 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
   build-essential \
   curl \
   git \
+  language-pack-en-base \
   nano \
   openssh-client \
   rsync \
