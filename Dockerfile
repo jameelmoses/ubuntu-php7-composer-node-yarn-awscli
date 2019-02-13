@@ -7,7 +7,8 @@ RUN rm /bin/sh && ln -s /bin/bash /bin/sh
 
 # Install packages
 RUN apt-get update
-RUN apt-get -y install wget \
+RUN apt-get -y install rsync \
+  wget \
   curl \
   git \
   zip \
