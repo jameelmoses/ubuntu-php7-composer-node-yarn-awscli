@@ -6,39 +6,39 @@ ENV DEBIAN_FRONTEND noninteractive
 RUN rm /bin/sh && ln -s /bin/bash /bin/sh
 
 # Install packages
-RUN apt-get update
-RUN apt-get -y install rsync \
-  wget \
+RUN apt-get update && apt-get install -y --no-install-recommends \
+  ansible \
+  apt-transport-https \
+  build-essential \
   curl \
   git \
-  zip \
-  unzip \
-  libxml2-dev \
-  build-essential \
+  language-pack-en-base \
+  libbz2-dev \
+  libc6-dev \
+  libgdbm-dev \
+  libncursesw5-dev \
+  libreadline-gplv2-dev \
+  libsqlite3-dev \
   libssl-dev \
-  vim \
+  libxml2-dev \
   nano \
   openssh-client \
-  libreadline-gplv2-dev \
-  libncursesw5-dev \
-  libsqlite3-dev \
-  tk-dev \
-  libgdbm-dev \
-  libc6-dev \
-  libbz2-dev \
+  rsync \
   software-properties-common \
-  language-pack-en-base \
-  ansible \
-  apt-transport-https
+  tk-dev \
+  unzip \
+  wget \
+  zip
 
 # Add repos
 RUN add-apt-repository ppa:deadsnakes/ppa
 RUN LC_ALL=en_US.UTF-8 apt-add-repository ppa:ondrej/php
-RUN apt-get update
 
-# Install python
-RUN apt-get install -y python3.7
-RUN apt-get install -y python3-pip
+## Instally python and pip
+RUN apt-get update && apt-get install -y \
+  python3.7 \
+  python3-pip
+
 RUN python3 -m pip install --upgrade pip
 
 # Install AWS CLI
@@ -72,7 +72,7 @@ RUN apt-get -y --allow-unauthenticated install \
   php-xdebug
 
 # Install latest Node and npm
-RUN apt-get install -y nodejs npm
+RUN apt-get install -y --no-install-recommends nodejs npm
 
 # Install yarn and gulp
 RUN npm install --global yarn gulp-cli
