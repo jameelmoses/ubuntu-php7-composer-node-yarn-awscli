@@ -97,4 +97,4 @@ RUN php /usr/local/bin/composer global require "hirak/prestissimo:^0.3"
 RUN mkdir -p ~/.ssh
 RUN [[ -f /.dockerenv ]] && echo -e "Host *\n\tStrictHostKeyChecking no\n\n" > ~/.ssh/config
 
-git push origin :refs/tags/php72-v1.0
+git push origin :refs/tags/v1.1
