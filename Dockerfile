@@ -73,8 +73,8 @@ RUN apt-get -y --allow-unauthenticated install \
 # Install latest Node and npm
 RUN apt-get install -y nodejs npm
 
-# Install yarn
-RUN npm install --global yarn
+# Install yarn and gulp
+RUN npm install --global yarn gulp-cli
 
 # Clean apt
 RUN apt-get clean
