@@ -1,4 +1,4 @@
-FROM ubuntu:xenial
+FROM ubuntu:bionic
 MAINTAINER Jameel Moses <hello@jameelmoses.com>
 ENV DEBIAN_FRONTEND noninteractive
 
@@ -40,12 +40,12 @@ RUN LC_ALL=en_US.UTF-8 apt-add-repository ppa:ondrej/php
 RUN apt-get update
 
 # Install python
-RUN apt-get install -y python2.7
-RUN apt-get install -y python-pip
-RUN pip install --upgrade pip
+RUN apt-get install -y python3.7
+RUN apt-get install -y python3-pip
+RUN pip3 install --upgrade pip3
 
 # Install AWS CLI
-RUN pip install awscli --upgrade --user
+RUN pip3 install awscli --upgrade --user
 
 # Install PHP
 RUN apt-get -y --allow-unauthenticated install \
@@ -70,7 +70,6 @@ RUN apt-get -y --allow-unauthenticated install \
   php7.2-xsl \
   php7.2-fpm \
   php7.2-intl \
-  php7.2-mcrypt \
   php7.2-mbstring \
   php7.2-zip \
   php-xdebug
@@ -79,7 +78,7 @@ RUN apt-get -y --allow-unauthenticated install \
 RUN curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.34.0/install.sh | bash && \
   export NVM_DIR="/root/.nvm" && \
   [ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh" && \
-  nvm install node && \
+  nvm install node
 
 # Install Yarn
 RUN apt-get -y install --no-install-recommends yarn
@@ -96,3 +95,5 @@ RUN php /usr/local/bin/composer global require "hirak/prestissimo:^0.3"
 # Misc
 RUN mkdir -p ~/.ssh
 RUN [[ -f /.dockerenv ]] && echo -e "Host *\n\tStrictHostKeyChecking no\n\n" > ~/.ssh/config
+
+ENV DEBIAN_FRONTEND teletype
