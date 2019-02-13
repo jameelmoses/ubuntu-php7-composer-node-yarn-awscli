@@ -11,11 +11,21 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
   curl \
   git \
   language-pack-en-base \
+  libbz2-dev \
+  libc6-dev \
+  libgdbm-dev \
+  libncursesw5-dev \
+  libreadline-gplv2-dev \
+  libsqlite3-dev \
+  libssl-dev \
+  libxml2-dev \
   nano \
   openssh-client \
   rsync \
   software-properties-common \
-  wget
+  unzip \
+  wget \
+  zip
 
 # Add repos
 RUN add-apt-repository ppa:deadsnakes/ppa
@@ -34,7 +44,29 @@ RUN pip install awscli --upgrade --user
 # Install PHP
 RUN apt-get -y --allow-unauthenticated install \
   php7.2 \
-  php7.2-cli
+  php7.2-cgi \
+  php7.2-cli \
+  php7.2-common \
+  php7.2-curl \
+  php7.2-dev \
+  php7.2-gd \
+  php7.2-gmp \
+  php7.2-json \
+  php7.2-ldap \
+  php7.2-mysql \
+  php7.2-odbc \
+  php7.2-opcache \
+  php7.2-pspell \
+  php7.2-readline \
+  php7.2-sqlite3 \
+  php7.2-tidy \
+  php7.2-xmlrpc \
+  php7.2-xsl \
+  php7.2-fpm \
+  php7.2-intl \
+  php7.2-mbstring \
+  php7.2-zip \
+  php-xdebug
 
 # Install latest Node and npm
 RUN apt-get install -y --no-install-recommends nodejs npm
