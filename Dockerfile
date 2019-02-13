@@ -8,27 +8,27 @@ RUN rm /bin/sh && ln -s /bin/bash /bin/sh
 # Install packages
 RUN apt-get update
 RUN apt-get -y install wget \
-    curl \
-    git \
-    zip \
-    unzip \
-    libxml2-dev \
-    build-essential \
-    libssl-dev \
-    vim \
-    nano \
-    openssh-client \
-    libreadline-gplv2-dev \
-    libncursesw5-dev \
-    libsqlite3-dev \
-    tk-dev \
-    libgdbm-dev \
-    libc6-dev \
-    libbz2-dev \
-    software-properties-common \
-    language-pack-en-base \
-    ansible \
-    apt-transport-https
+  curl \
+  git \
+  zip \
+  unzip \
+  libxml2-dev \
+  build-essential \
+  libssl-dev \
+  vim \
+  nano \
+  openssh-client \
+  libreadline-gplv2-dev \
+  libncursesw5-dev \
+  libsqlite3-dev \
+  tk-dev \
+  libgdbm-dev \
+  libc6-dev \
+  libbz2-dev \
+  software-properties-common \
+  language-pack-en-base \
+  ansible \
+  apt-transport-https
 
 # Add Yarn
 RUN curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | apt-key add -
@@ -49,41 +49,41 @@ RUN pip install awscli --upgrade --user
 
 # Install PHP
 RUN apt-get -y --allow-unauthenticated install \
-    php7.1 \
-    php7.1-cgi \
-    php7.1-cli \
-    php7.1-common \
-    php7.1-curl \
-    php7.1-dev \
-    php7.1-gd \
-    php7.1-gmp \
-    php7.1-json \
-    php7.1-ldap \
-    php7.1-mysql \
-    php7.1-odbc \
-    php7.1-opcache \
-    php7.1-pspell \
-    php7.1-readline \
-    php7.1-sqlite3 \
-    php7.1-tidy \
-    php7.1-xmlrpc \
-    php7.1-xsl \
-    php7.1-fpm \
-    php7.1-intl \
-    php7.1-mcrypt \
-    php7.1-mbstring \
-    php7.1-zip \
-    php-xdebug
+  php7.2 \
+  php7.2-cgi \
+  php7.2-cli \
+  php7.2-common \
+  php7.2-curl \
+  php7.2-dev \
+  php7.2-gd \
+  php7.2-gmp \
+  php7.2-json \
+  php7.2-ldap \
+  php7.2-mysql \
+  php7.2-odbc \
+  php7.2-opcache \
+  php7.2-pspell \
+  php7.2-readline \
+  php7.2-sqlite3 \
+  php7.2-tidy \
+  php7.2-xmlrpc \
+  php7.2-xsl \
+  php7.2-fpm \
+  php7.2-intl \
+  php7.2-mcrypt \
+  php7.2-mbstring \
+  php7.2-zip \
+  php-xdebug
 
 # Install node & gulp
-RUN curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.32.1/install.sh | bash && \
-    export NVM_DIR="/root/.nvm" && \
-    [ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh" && \
-    nvm install 8.11.3 && \
-    npm i -g npm gulp-cli
+RUN curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.34.0/install.sh | bash && \
+  export NVM_DIR="/root/.nvm" && \
+  [ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh" && \
+  nvm install node && \
 
 # Install Yarn
-RUN apt-get -y install yarn --no-install-recommends
+RUN apt-get -y install --no-install-recommends yarn
+RUN yarn global add gulp-cli
 
 # Clean apt
 RUN apt-get clean
@@ -96,3 +96,5 @@ RUN php /usr/local/bin/composer global require "hirak/prestissimo:^0.3"
 # Misc
 RUN mkdir -p ~/.ssh
 RUN [[ -f /.dockerenv ]] && echo -e "Host *\n\tStrictHostKeyChecking no\n\n" > ~/.ssh/config
+
+git push origin :refs/tags/php72-v1.0
