@@ -7,6 +7,7 @@ RUN rm /bin/sh && ln -s /bin/bash /bin/sh
 
 # Install packages
 RUN apt-get update && apt-get install -y --no-install-recommends \
+  gpg-agent \
   build-essential \
   curl \
   git \
@@ -68,11 +69,14 @@ RUN apt-get -y --allow-unauthenticated install \
   php7.2-zip \
   php-xdebug
 
-# Install latest Node and npm
-RUN apt-get install -y --no-install-recommends nodejs npm
+# Install latest Node
+RUN curl -sL https://deb.nodesource.com/setup_10.x | bash -
+RUN apt-get install -y nodejs
+RUN node --version
+RUN npm --version
 
 # Install yarn and gulp
-RUN npm install --global yarn gulp-cli
+RUN npm install --global yarn
 
 # Clean apt
 RUN apt-get clean
