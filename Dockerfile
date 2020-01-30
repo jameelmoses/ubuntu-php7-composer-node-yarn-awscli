@@ -32,7 +32,7 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
 RUN add-apt-repository ppa:deadsnakes/ppa
 RUN LC_ALL=en_US.UTF-8 apt-add-repository ppa:ondrej/php
 
-## Instally python and pip
+## Install python and pip
 RUN apt-get update && apt-get install -y \
   python3.7 \
   python3-pip
@@ -44,38 +44,36 @@ RUN pip install awscli --upgrade --user
 
 # Install PHP
 RUN apt-get -y --allow-unauthenticated install \
-  php7.2 \
-  php7.2-cgi \
-  php7.2-cli \
-  php7.2-common \
-  php7.2-curl \
-  php7.2-dev \
-  php7.2-gd \
-  php7.2-gmp \
-  php7.2-json \
-  php7.2-ldap \
-  php7.2-mysql \
-  php7.2-odbc \
-  php7.2-opcache \
-  php7.2-pspell \
-  php7.2-readline \
-  php7.2-sqlite3 \
-  php7.2-tidy \
-  php7.2-xmlrpc \
-  php7.2-xsl \
-  php7.2-fpm \
-  php7.2-intl \
-  php7.2-mbstring \
-  php7.2-zip \
+  php7.4 \
+  php7.4-cgi \
+  php7.4-cli \
+  php7.4-common \
+  php7.4-curl \
+  php7.4-dev \
+  php7.4-gd \
+  php7.4-gmp \
+  php7.4-json \
+  php7.4-ldap \
+  php7.4-mysql \
+  php7.4-odbc \
+  php7.4-opcache \
+  php7.4-pspell \
+  php7.4-readline \
+  php7.4-sqlite3 \
+  php7.4-tidy \
+  php7.4-xmlrpc \
+  php7.4-xsl \
+  php7.4-fpm \
+  php7.4-intl \
+  php7.4-mbstring \
+  php7.4-zip \
   php-xdebug
 
 # Install latest Node
-RUN curl -sL https://deb.nodesource.com/setup_10.x | bash -
+RUN curl -sL https://deb.nodesource.com/setup_12.x | bash -
 RUN apt-get install -y nodejs
-RUN node --version
-RUN npm --version
 
-# Install yarn and gulp
+# Install yarn
 RUN npm install --global yarn
 
 # Clean apt
