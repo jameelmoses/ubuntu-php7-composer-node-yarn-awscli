@@ -1,4 +1,4 @@
-FROM ubuntu:bionic
+FROM ubuntu:focal
 MAINTAINER Jameel Moses <hello@jameelmoses.com>
 ENV DEBIAN_FRONTEND noninteractive
 
@@ -70,7 +70,7 @@ RUN apt-get -y --allow-unauthenticated install \
   php-xdebug
 
 # Install latest Node
-RUN curl -sL https://deb.nodesource.com/setup_12.x | bash -
+RUN curl -sL https://deb.nodesource.com/setup_14.x | bash -
 RUN apt-get install -y nodejs
 
 # Install yarn
