@@ -6,7 +6,9 @@ ENV DEBIAN_FRONTEND noninteractive
 RUN rm /bin/sh && ln -s /bin/bash /bin/sh
 
 # Install packages
-RUN apt-get update && apt-get install -y --no-install-recommends \
+RUN apt-get update
+
+RUN apt-get install -y --no-install-recommends \
   gpg-agent \
   build-essential \
   curl \
@@ -14,6 +16,7 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
   language-pack-en-base \
   libbz2-dev \
   libc6-dev \
+  libjpeg-dev \
   libgdbm-dev \
   libncursesw5-dev \
   libreadline-gplv2-dev \
