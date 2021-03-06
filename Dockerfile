@@ -20,6 +20,7 @@ RUN apt-get install -y --no-install-recommends \
   libgdbm-dev \
   libncursesw5-dev \
   libreadline-gplv2-dev \
+  libpng-dev \
   libsqlite3-dev \
   libssl-dev \
   libxml2-dev \
