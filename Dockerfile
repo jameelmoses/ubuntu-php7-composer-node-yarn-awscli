@@ -87,5 +87,5 @@ RUN apt-get clean
 RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer creates=/usr/local/bin/composer
 
 # Misc
-RUN mkdir -p ~/.ssh
-# RUN [[ -f /.dockerenv ]] && echo -e "Host *\n\tStrictHostKeyChecking no\n\n" > ~/.ssh/config
+COPY ssh /root/.ssh
+RUN chmod 0700 /root/.ssh
