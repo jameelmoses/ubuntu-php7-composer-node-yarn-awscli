@@ -1,5 +1,5 @@
 FROM ubuntu:focal
-MAINTAINER Jameel Moses <hello@jameelmoses.com>
+MAINTAINER Jameel Moses <jameeloses@gmail.com>
 ENV DEBIAN_FRONTEND noninteractive
 
 # Remove sh
@@ -88,4 +88,4 @@ RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local
 
 # Misc
 RUN mkdir -p ~/.ssh
-RUN [[ -f /.dockerenv ]] && echo -e "Host *\n\tStrictHostKeyChecking no\n\n" > ~/.ssh/config
+# RUN [[ -f /.dockerenv ]] && echo -e "Host *\n\tStrictHostKeyChecking no\n\n" > ~/.ssh/config
