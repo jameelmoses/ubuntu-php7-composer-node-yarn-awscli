@@ -3,6 +3,6 @@
 Ubuntu 20.04 LTS
 PHP-FPM 7.4
 Composer
-Node 14
+Node 16
 Yarn
 AWS CLI
