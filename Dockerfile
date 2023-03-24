@@ -1,4 +1,4 @@
-FROM ubuntu:focal
+FROM ubuntu:latest
 MAINTAINER Jameel Moses <jameeloses@gmail.com>
 ENV DEBIAN_FRONTEND noninteractive
 
@@ -19,7 +19,6 @@ RUN apt-get install -y --no-install-recommends \
   libjpeg-dev \
   libgdbm-dev \
   libncursesw5-dev \
-  libreadline-gplv2-dev \
   libpng-dev \
   libsqlite3-dev \
   libssl-dev \
@@ -48,33 +47,32 @@ RUN pip install awscli --upgrade --user
 
 # Install PHP
 RUN apt-get -y --allow-unauthenticated install \
-  php7.4 \
-  php7.4-cgi \
-  php7.4-cli \
-  php7.4-common \
-  php7.4-curl \
-  php7.4-dev \
-  php7.4-gd \
-  php7.4-gmp \
-  php7.4-json \
-  php7.4-ldap \
-  php7.4-mysql \
-  php7.4-odbc \
-  php7.4-opcache \
-  php7.4-pspell \
-  php7.4-readline \
-  php7.4-sqlite3 \
-  php7.4-tidy \
-  php7.4-xmlrpc \
-  php7.4-xsl \
-  php7.4-fpm \
-  php7.4-intl \
-  php7.4-mbstring \
-  php7.4-zip \
+  php8.1 \
+  php8.1-cgi \
+  php8.1-cli \
+  php8.1-common \
+  php8.1-curl \
+  php8.1-dev \
+  php8.1-gd \
+  php8.1-gmp \
+  php8.1-ldap \
+  php8.1-mysql \
+  php8.1-odbc \
+  php8.1-opcache \
+  php8.1-pspell \
+  php8.1-readline \
+  php8.1-sqlite3 \
+  php8.1-tidy \
+  php8.1-xmlrpc \
+  php8.1-xsl \
+  php8.1-fpm \
+  php8.1-intl \
+  php8.1-mbstring \
+  php8.1-zip \
   php-xdebug
 
 # Install latest Node
-RUN curl -sL https://deb.nodesource.com/setup_16.x | bash -
+RUN curl -sL https://deb.nodesource.com/setup_18.x | bash -
 RUN apt-get install -y nodejs
 
 # Install yarn

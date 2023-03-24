@@ -1,8 +1,8 @@
 # ubuntu-php7-composer-node-yarn-awscli
 
-Ubuntu 20.04 LTS
-PHP-FPM 7.4
+Ubuntu LTS
+PHP-FPM 8.1
 Composer
-Node 16
+Node 18
 Yarn
 AWS CLI
