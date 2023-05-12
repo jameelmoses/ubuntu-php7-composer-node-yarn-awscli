@@ -33,7 +33,6 @@ RUN apt-get install -y --no-install-recommends \
 
 # Add repos
 RUN add-apt-repository ppa:deadsnakes/ppa
-RUN LC_ALL=en_US.UTF-8 apt-add-repository ppa:ondrej/php
 
 ## Install python and pip
 RUN apt-get update && apt-get install -y \
